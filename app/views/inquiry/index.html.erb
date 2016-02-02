@@ -5,7 +5,7 @@
 
   <% if @inquiry.errors.any? %>
     <div class="alert alert-danger" role="alert">
-      <strong>入力内容にエラーがあります</strong>
+      <strong><%= @inquiry.errors.count %>件のエラーがあります</strong>
       <ul>
         <% @inquiry.errors.each do |attr, msg| %>
           <li><%= msg %></li>
@@ -21,14 +21,34 @@
     </tr>
     <tr>
       <th>メールアドレス<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :email %></td>
+      <td><%= f.email_field :email %></td>
     </tr>
+     <tr>
+      <th>電話番号<span class="text-danger">（必須）</span></th>
+      <td><%= f.text_field :phone %></td>
+    </tr>
+     <tr>
+      <th>お問い合わせ種別<span class="text-danger">（必須）</span></th>
+      <td><%= f.check_box :service, {}, 'サービスについて', '' %> <%= f.label :service, "サービスについて" %>
+      <%= f.check_box :recruit, {}, '採用について', '' %> <%= f.label :recruit, "採用について" %>
+      <%= f.check_box :media, {}, '取材について', '' %> <%= f.label :media, "取材について" %>
+      </td>
+
+    </tr>
+
+
+
+
+    <tr>
     <tr>
       <th>お問い合わせ内容</th>
       <td><%= f.text_area :message %></td>
     </tr>
   </table>
   <%= f.submit '確認', class: 'btn btn-primary' %>
-<% end %>
+  <%= link_to 'クリア', '/inquiry', class: 'btn btn-primary' %>
 
-/app/views/inquiry/confirm.html.erb
+
+
+
+<% end %>

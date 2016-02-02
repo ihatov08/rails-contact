@@ -18,6 +18,24 @@
         <%= @inquiry.email %>
       </td>
     </tr>
+      <tr>
+      <th>電話番号</th>
+      <td>
+        <%= f.hidden_field :phone %>
+        <%= @inquiry.phone %>
+      </td>
+      <tr>
+      <th>お問い合わせ種別</th>
+      <td>
+        <%= f.hidden_field :service %>
+        <%= @inquiry.service %>
+        <%= f.hidden_field :recruit %>
+        <%= @inquiry.recruit %>
+        <%= f.hidden_field :media %>
+        <%= @inquiry.media %>
+      </td>
+
+    </tr>
     <tr>
       <th>お問い合わせ内容</th>
       <td>
@@ -27,4 +45,6 @@
     </tr>
   </table>
   <%= f.submit '送信', :class => 'btn btn-primary' %>
+
+  <%= link_to '戻る', inquiry_path %>
 <% end %>
