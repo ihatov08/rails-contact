@@ -3,7 +3,16 @@
     <h1>お問い合わせ</h1>
   </div>
 
+<% if @inquiry.errors[:name].blank? %>
+  <span class="text-danger">エラー無しの場合</span>
+
+<% else %>
+  <span class="text-danger">エラーの場合</span>
+
+<% end %>
+
   <% if @inquiry.errors.any? %>
+
     <div class="alert alert-danger" role="alert">
       <strong><%= @inquiry.errors.count %>件のエラーがあります</strong>
       <ul>
@@ -41,12 +50,12 @@
 
     <tr>
     <tr>
-      <th>お問い合わせ内容</th>
+      <th>お問い合わせ内容<span class="text-danger">（必須）</span></th>
       <td><%= f.text_area :message %></td>
     </tr>
   </table>
   <%= f.submit '確認', class: 'btn btn-primary' %>
-  <%= link_to 'クリア', '/inquiry', class: 'btn btn-primary' %>
+  <%= link_to 'クリア', '/inquiry' %>
 
 
 

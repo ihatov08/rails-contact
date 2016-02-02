@@ -27,6 +27,15 @@ config.action_mailer.smtp_settings = {
   :enable_starttls_auto => true
 }
 
+# begin
+#       MyMailer.received_email( )
+#     rescue Exception => e
+#       e_msg = e.message.gsub( "\n", "" )
+#       flash[ :error ] => "メール送信に失敗しました。" +
+#         "<a href='#' onclick='alert(\"#{ e_msg }\")'>詳細...</a>"
+#     end
+
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
