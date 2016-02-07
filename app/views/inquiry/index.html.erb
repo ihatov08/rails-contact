@@ -2,15 +2,6 @@
   <div class="page-header">
     <h1>お問い合わせ</h1>
   </div>
-
-<% if @inquiry.errors[:name].blank? %>
-  <span class="text-danger">エラー無しの場合</span>
-
-<% else %>
-  <span class="text-danger">エラーの場合</span>
-
-<% end %>
-
   <% if @inquiry.errors.any? %>
 
     <div class="alert alert-danger" role="alert">
@@ -56,8 +47,4 @@
   </table>
   <%= f.submit '確認', class: 'btn btn-primary' %>
   <%= link_to 'クリア', '/inquiry' %>
-
-
-
-
 <% end %>
