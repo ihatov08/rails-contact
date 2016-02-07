@@ -1,6 +1,6 @@
 class Inquirymailer < ApplicationMailer
   default from: "ihatov08@gmail.com"
-  default to: "ihatov_08@yahoo.co.jp"
+  default to: "info@nowall.co.jp"
 
 def received_email(inquiry)
     @inquiry = inquiry
