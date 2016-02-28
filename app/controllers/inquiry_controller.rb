@@ -3,11 +3,17 @@ def index
     # 入力画面を表示
     if session[:inquiry]
     @inquiry = Inquiry.new session[:inquiry]
+    reset_session
   else
-    @inquiry = Inquiry.new
+    @inquiry = Inquiry.new session[:inquiry]
     render :action => 'index'
   end
 end
+
+# def destroy
+#   reset_session
+#   redirect_to inquiry_url
+# end
 
   def confirm
     # 入力値のチェック
@@ -27,7 +33,9 @@ end
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
       Inquirymailer.received_email(@inquiry).deliver
-      session[:inquiry] = nil
+      #メールを送信したらsessionを消去する。
+      # session[:inquiry] = nil
+      reset_session
     end
 
     # 完了画面を表示

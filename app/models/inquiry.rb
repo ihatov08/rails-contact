@@ -13,7 +13,20 @@ class Inquiry < ActiveRecord::Base
   validates :phone, :presence => {:message => '電話番号を入力して下さい'}
   validates :phone, format: { with: /(\b|\D)\(?(0[57-9]0|0\d)([\-\)\(]?\d){5}[\-\)\(]?\d{3}(\b|\D)/,:message => '電話番号を正しく入力して下さい'}
 
+  # validates :service, :acceptance => {:message => 'チェックしてください'}
+
+  validate :check_box
+
+  def check_box
+    if service.nil? && recruit.nil? && media.nil?
+        errors.add(:service, "入力してください")
+    end
+  end
+
+
 
 
   validates :message, :presence => {:message => 'お問い合わせ内容を入力してください'}
+
+  # validates :like, present_like: true
 end
